@@ -25,6 +25,22 @@
               </th>
               <th scope="col" class="px-1 py-3">
                 <div class="flex items-center justify-center">
+                    MES
+                    <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+<path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+</svg></a>
+                </div>
+              </th>
+              <th scope="col" class="px-1 py-3">
+                <div class="flex items-center justify-center">
+                    AÑO
+                    <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+<path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+</svg></a>
+                </div>
+              </th>
+              <th scope="col" class="px-1 py-3">
+                <div class="flex items-center justify-center">
                     Clase
                     <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
 <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
@@ -183,16 +199,16 @@
                 <td class="px-2 py-4 text-center">
                   {{fila[7]}}
                 </td>
-                <td class="px-2 py-4">
+                <td class="px-2 py-4 text-center">
                   {{fila[8]}}
                 </td>
-                <td class="px-2 py-4">
+                <td class="px-2 py-4 text-center">
                   {{fila[9]}}
                 </td>
-                <td class="px-2 py-4 text-center">
+                <td class="px-2 py-4">
                   {{fila[10]}}
                 </td>
-                <td class="px-2 py-4 text-center">
+                <td class="px-2 py-4">
                   {{fila[11]}}
                 </td>
                 <td class="px-2 py-4 text-center">
@@ -207,8 +223,14 @@
                 <td class="px-2 py-4 text-center">
                   {{fila[15]}}
                 </td>
-                <td class="px-2 py-4">
+                <td class="px-2 py-4 text-center">
                   {{fila[16]}}
+                </td>
+                <td class="px-2 py-4 text-center">
+                  {{fila[17]}}
+                </td>
+                <td class="px-2 py-4">
+                  {{fila[18]}}
                 </td>
                 <td class="px-2 py-4 text-center">
                   <button type="submit" class="editar-btn font-medium text-blue-500 dark:text-blue-500 hover:underline" data-id="{{fila[0]}}" >EDITAR</button>
@@ -285,38 +307,42 @@
           <!--Buscador modal-->
           <div class="flex justify-between my-5 px-5 mx-3">
             <div class="relative flex flex-wrap items-stretch w-full md:w-7/12 md:max-w-48 h-10 my-2">
-              <input type="search" class="relative w-full m-0 block flex-auto rounded border border-solid border-neutral-300 bg-white bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2"/>
+              <input type="text" id="search_reg" name="nombre" list="lista_empleados" oninput="autocompletar()" class="relative w-full m-0 block flex-auto rounded border border-solid border-neutral-300 bg-white bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2"/>
               <!--Search icon-->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search absolute top-1/2 right-4 -translate-y-1/2" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
               </svg>
             </div>
+            <datalist id="lista_empleados">
+              {% for empleado in lista_e %}
+                <option value="{{ empleado[0] }}">
+              {% endfor %}
+            </datalist>
           </div>
           <!-- Modal body -->
           <div class="p-2 space-y-6 flex justify-center">
             <form class="w-full" method="POST" action="/laborales">
-
               <!-- FILA 1 -->
               <div class="flex flex-wrap mx-3 md:mb-6 mb-0">
                 <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     APELLIDOS Y NOMBRES
                   </label>
-                  <input name="nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="grid-first-name" type="text" placeholder="">
+                  <input name="nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="nomper" type="text" placeholder="" readonly>
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     CODIGO
                   </label>
-                  <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="codper" type="text" placeholder="" oninput="autocompletar()">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     DNI
                   </label>
-                  <input name="numdoc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="numdoc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="numdoc" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
               </div>
@@ -327,35 +353,35 @@
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     CLASE
                   </label>
-                  <input name="codcla" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="codcla" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="codcla" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     CATEGORIA
                   </label>
-                  <input name="codcat" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="codcat" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="codcat" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     TIPO
                   </label>
-                  <input name="codtip" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="codtip" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="codtip" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     HRS SEMANALES
                   </label>
-                  <input name="hrssem" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="hrssem" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="hrssem" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     HRS MENSUALES
                   </label>
-                  <input name="hrsmen" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="hrsmen" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="hrsmen" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
               </div>
@@ -366,16 +392,7 @@
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                     FACULTAD
                   </label>
-                  <div class="relative">
-                    <select name="facult" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="grid-state">
-                      <option>FACULTAD DE INGENIERIA ELECTRÓNICA E INFROMÁTICA</option>
-                      <option>Missouri</option>
-                      <option>Texas</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                  </div>
+                  <input name="facult" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="facult" type="text" placeholder="">
                 </div>
               </div>
 
@@ -386,9 +403,17 @@
                     ANEXO 1
                   </label>
                   <div class="relative">
-                    <select name="aneuno" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="grid-state">
-                      <option>PRESENTÓ</option>
+                    <select name="aneuno" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="aneuno">
+                      <option>FALLECIMIENTO</option>
+                      <option>LICENCIA POR ENFERMEDAD</option>
+                      <option>LICENCIA POR MATERNIDAD</option>
+                      <option>LICENCIA SIN GOCE DE HABER</option>
+                      <option>NO APLICA</option>
                       <option>NO PRESENTÓ</option>
+                      <option>OTROS</option>
+                      <option>PRESENTÓ</option> 
+                      <option>RENUNCIA</option>
+                      <option>SIN ASISTENCIA</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -400,10 +425,17 @@
                     ANEXO 2
                   </label>
                   <div class="relative">
-                    <select name="anedos" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="grid-state">
-                      <option>PRESENTÓ</option>
-                      <option>NO PRESENTÓ</option>
+                    <select name="anedos" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="anedos">
+                      <option>FALLECIMIENTO</option>
+                      <option>LICENCIA POR ENFERMEDAD</option>
+                      <option>LICENCIA POR MATERNIDAD</option>
+                      <option>LICENCIA SIN GOCE DE HABER</option>
                       <option>NO APLICA</option>
+                      <option>NO PRESENTÓ</option>
+                      <option>OTROS</option>
+                      <option>PRESENTÓ</option> 
+                      <option>RENUNCIA</option>
+                      <option>SIN ASISTENCIA</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -414,39 +446,46 @@
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     HRS CI
                   </label>
-                  <input name="hrsci" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="hrsci" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="hrs-ci" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/6 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     HRS CNI
                   </label>
-                  <input name="hrscni" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="hrscni" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="hrs-cni" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/6 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     TOT HRS DICT
                   </label>
-                  <input name="tot_hrs_dict" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="tot_hrs_dict" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="tot-hrs-dict" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
                 <div class="w-full md:w-1/6 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     HRS A DESC
                   </label>
-                  <input name="hrsdes" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="hrsdes" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="hrs-desc" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
               </div>
 
               <!-- FILA 5 -->
               <div class="flex flex-wrap mx-3 mb-0 md:mb-2">
-                <div class="w-full px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    OBSERVACION
+                    N° DE NT
                   </label>
-                  <input name="observ" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                  <input name="num_nt" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="N.T. 12345-2023">
+                  <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+                </div>
+                <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    COMENTARIO
+                  </label>
+                  <input name="comentario" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
               </div>
@@ -459,8 +498,8 @@
                   </label>
                   <div class="relative">
                     <select name="tip-totrei" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="chk-rei-reg">
-                      <option>CON REINTEGRO</option>
                       <option>SIN REINTEGRO</option>
+                      <option>CON REINTEGRO</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -480,6 +519,46 @@
                     DESCRIPCION REINTEGRO
                   </label>
                   <input name="descrip-totrei" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="descrip-rei-reg" type="text" placeholder="">
+                  <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+                </div>
+              </div>
+              <!-- FILA 7 -->
+              <div class="flex flex-wrap mx-3 md:mb-6 mb-0">
+                <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    MES DE REGISTRO
+                  </label>
+                  <div class="relative">
+                    <select name="fmes_reg" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="chk-fmes-reg">
+                      <option>ENERO</option>
+                      <option>FEBRERO</option>
+                      <option>MARZO</option>
+                      <option>ABRIL</option>
+                      <option>MAYO</option>
+                      <option>JUNIO</option>
+                      <option>JULIO</option>
+                      <option>AGOSTO</option>
+                      <option>SEPTIEMBRE</option>
+                      <option>OCTUBRE</option>
+                      <option>NOVIEMBRE</option>
+                      <option>DICIEMBRE</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    AÑO DE REGISTRO
+                  </label>
+                  <input name="fano_reg" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="fano-reg" type="text" placeholder="">
+                </div>
+                <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    OBSERVACION
+                  </label>
+                  <input name="observ" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
                   <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                 </div>
               </div>
@@ -524,14 +603,14 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       APELLIDOS Y NOMBRES
                     </label>
-                    <input name="nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="edit-nomper" type="text" placeholder="">
+                    <input name="edit_nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="edit-nomper" type="text" placeholder="" readonly oninput="autocompletar()">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       CODIGO
                     </label>
-                    <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-codper" type="text" placeholder="">
+                    <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-codper" type="text" placeholder="" oninput="autocompletar()">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
@@ -588,16 +667,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                       FACULTAD
                     </label>
-                    <div class="relative">
-                      <select name="facult" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="edit-facult">
-                        <option>FACULTAD DE INGENIERIA ELECTRÓNICA E INFROMÁTICA</option>
-                        <option>Missouri</option>
-                        <option>Texas</option>
-                      </select>
-                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                      </div>
-                    </div>
+                    <input name="facult" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-edit-facult" type="text" placeholder="">
                   </div>
                 </div>
   
@@ -686,14 +756,27 @@
 </div>
 </section>
 
+<!--ABRIR FORMULARIO DE NUEVO REGISTRO-->
 <script>
   const boton_nuevo_reg = document.getElementById("new-button");
   const modal_reg = document.getElementById("modal-registro");
   const boton_cancelar_reg = document.getElementById("cancel-button-reg");
   const boton_cerrar_reg = document.getElementById("close-button-reg");
+  const ano_reg = document.getElementById("fano-reg");
+  const year = new Date().getFullYear();
+  const meses = [
+    "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO",
+    "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+  ];
+  const fechaActual = new Date();
+  const mes = fechaActual.getMonth();
+  const mesTexto = meses[mes];
+  const mes_reg = document.getElementById("chk-fmes-reg")
 
   boton_nuevo_reg.addEventListener('click',() => {
     modal_reg.classList.toggle('hidden')
+    ano_reg.value = year;
+    mes_reg.value = mesTexto;
   })
 
   boton_cancelar_reg.addEventListener('click',() => {
@@ -705,6 +788,7 @@
   })
 </script>
 
+<!--BUSCADOR DE LA TABLA-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -735,15 +819,17 @@
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[5] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[6] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[7] + "</td>");
-            newRow.append("<td class='px-2 py-4'>" + fila[8] + "</td>");
-            newRow.append("<td class='px-2 py-4'>" + fila[9] + "</td>");
-            newRow.append("<td class='px-2 py-4 text-center'>" + fila[10] + "</td>");
-            newRow.append("<td class='px-2 py-4 text-center'>" + fila[11] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[8] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[9] + "</td>");
+            newRow.append("<td class='px-2 py-4'>" + fila[10] + "</td>");
+            newRow.append("<td class='px-2 py-4'>" + fila[11] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[12] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[13] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[14] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'>" + fila[15] + "</td>");
-            newRow.append("<td class='px-2 py-4'>" + fila[16] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[16] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[17] + "</td>");
+            newRow.append("<td class='px-2 py-4'>" + fila[18] + "</td>");
             newRow.append("<td class='px-2 py-4 text-center'><button type='submit' class='editar-btn font-medium text-blue-500 dark:text-blue-500 hover:underline' data-id='" + fila[0] + "'>EDITAR</button></td>");
 
             // Agregar más celdas aquí según tus datos
@@ -756,6 +842,8 @@
     });
   });
   </script>
+
+  <!--ABRIR FORMULARIO DE EDITAR/ACTUALIZAR REGISTRO-->
   <script>
     const botones_nuevo_act = document.querySelectorAll('.editar-btn');
     const modal_act = document.getElementById("modal-actualizar");
@@ -795,4 +883,91 @@
     });
   
   </script>
+
+    <!--FUNCION AUTOCOMPLETAR DE NUEVO REGISTRO-->
+  <script>
+            // Dentro de la función autocompletar
+    function autocompletar() {
+        var nombreInput = document.getElementById("search_reg");
+        var codigoInput = document.getElementById("codper");
+        var idClaseInput = document.getElementById("codcla");
+        var nombresDatalist = document.getElementById("lista_empleados");
+        var nombreOutput = document.getElementById("nomper");
+        var numeroDoc = document.getElementById("numdoc");
+        var idCatInput = document.getElementById("codcat");
+        var idTipoInput = document.getElementById("codtip");
+        var hrssemInput = document.getElementById("hrssem");
+        var hrsmenInput = document.getElementById("hrsmen");
+        var facultadInput = document.getElementById('facult');
+
+        // Busca la opción seleccionada en el datalist
+        for (var i = 0; i < nombresDatalist.options.length; i++) {
+            if (nombresDatalist.options[i].value === nombreInput.value) {
+                // Haz una solicitud AJAX para obtener los valores desde el servidor Flask
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/autocompletar", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        console.log(response);
+                        // Asigna los valores a los campos de entrada
+                        codigoInput.value = response.codigo;
+                        idClaseInput.value = response.id_clase;
+                        nombreOutput.value = response.nombre;
+                        numeroDoc.value = response.dni;
+                        idCatInput.value = response.id_cat;
+                        idTipoInput.value = response.id_tipo;
+                        hrssemInput.value = response.hrs_sem;
+                        hrsmenInput.value = response.hrs_men;
+                        facultadInput.value = response.nombre_facultad;
+                    }
+                };
+                // Envía el nombre seleccionado al servidor Flask
+                xhr.send("search_reg=" + encodeURIComponent(nombreInput.value));
+
+                console.log(nombreInput.value)
+                break;
+            }
+        }
+    }
+  </script>
+
+  <!--CALCULADOR DE SUMA DE HORAS TOTALES DE TRABAJO-->
+  <script>
+    // Obtener referencias a los elementos de entrada
+    var hrsCiInput = document.getElementById("hrs-ci");
+    var hrsCniInput = document.getElementById("hrs-cni");
+    var totHrsDictInput = document.getElementById("tot-hrs-dict");
+    var hrsmenInput = document.getElementById("hrsmen");
+    var hrsDescInput = document.getElementById("hrs-desc");
+
+    // Escuchar eventos de cambio en los inputs de hrs-ci, hrs-cni y hrsmen
+    hrsCiInput.addEventListener("input", calcularSuma);
+    hrsCniInput.addEventListener("input", calcularSuma);
+    hrsmenInput.addEventListener("input", calcularSuma);
+
+    // Función para calcular la suma y la resta
+    function calcularSuma() {
+        // Obtener los valores de los inputs y convertirlos a números
+        var hrsCi = parseFloat(hrsCiInput.value) || 0;
+        var hrsCni = parseFloat(hrsCniInput.value) || 0;
+        var hrsmen = parseFloat(hrsmenInput.value) || 0;
+
+        // Calcular la suma
+        var suma = hrsCi + hrsCni;
+
+        // Actualizar el valor del input "tot-hrs-dict"
+        totHrsDictInput.value = suma;
+
+        // Calcular la resta
+        var resta = hrsmen - suma;
+        if (resta < 0){
+          hrsDescInput.value = 0
+        }else{
+          // Actualizar el valor del input "hrs-desc"
+          hrsDescInput.value = resta;
+        }
+    }
+</script>
 {% endblock %}

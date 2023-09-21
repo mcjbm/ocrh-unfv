@@ -6,7 +6,7 @@
 <!-- BUSCADOR y BOTON NUEVO -->
   <div class="flex flex-wrap justify-between w-10/12 items-center mt-5 mb-3">
     <div class="relative flex flex-wrap items-stretch w-full sm:w-7/12 h-10 my-2">
-      <input type="search" class="relative w-full m-0 block flex-auto rounded border border-solid border-neutral-300 bg-white bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2"/>
+      <input id="searchInput" type="search" class="relative w-full m-0 block flex-auto rounded border border-solid border-neutral-300 bg-white bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2"/>
       <!--Search icon-->
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search absolute top-1/2 right-4 -translate-y-1/2" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -17,7 +17,7 @@
 
 <!-- TABLA DE REGISTROS-->
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-1  w-10/12">
-  <table class="w-full text-xs text-left text-gray-500">
+  <table id="resultsTable" class="w-full text-xs text-left text-gray-500">
       <thead class="text-xs text-white uppercase bg-gray-600">
           <tr>
                 <th scope="col" class="px-2 py-3">
@@ -98,38 +98,40 @@
           </tr>
       </thead>
       <tbody>
+        {% for fila in lista %}
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-100">
               <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-                2007071
+                  {{fila[0]}}
                 </th>
-                <td class="px-2 py-4 text-center">
-                  ACOSTA SOLORZANO WILLIAMS FERNANDO
+                <td class="px-2 py-4 text-left">
+                  {{fila[1]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  06434186
+                  {{fila[2]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  DOCENTE PERMANENTE
+                  {{fila[3]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  AX
+                  {{fila[4]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  TC
+                  {{fila[5]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  40
+                  {{fila[6]}}
                 </td>
                 <td class="px-2 py-4 text-center">
-                  160
+                  {{fila[7]}}
                 </td>
                 <td class="px-2 py-4">
-                  FACULTAD DE INGENIERIA ELECTRONICA E INFORMATICA
+                  {{fila[8]}}
                 </td>
                 <td class="px-2 py-4 text-center">
                   <a id="up-button" href="#" class="font-medium text-blue-500 dark:text-blue-500 hover:underline">EDITAR</a>
                 </td>
           </tr>
+        {% endfor %}
       </tbody>
   </table>
 </div>
@@ -199,6 +201,7 @@
           </div>
           <!-- Modal body -->
           <div class="p-2 space-y-6 flex justify-center">
+            <!--FORMULARIO DE NUEVO REGISTRO-->
             <form class="w-full" method="POST" action="/laborales">
 
               <!-- FILA 1 -->
@@ -273,9 +276,9 @@
                   </label>
                   <div class="relative">
                     <select name="facult" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="grid-state">
-                      <option>FACULTAD DE INGENIERIA ELECTRÓNICA E INFROMÁTICA</option>
-                      <option>Missouri</option>
-                      <option>Texas</option>
+                      {% for facultad in facultades %}
+                      <option>{{ facultad[0] }}</option>
+                      {% endfor %}
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -319,25 +322,26 @@
   
                 <!-- FILA 1 -->
                 <div class="flex flex-wrap mx-3 md:mb-6 mb-0">
+                  <input type="hidden" name="edit-id" id="edit-id">
                   <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       APELLIDOS Y NOMBRES
                     </label>
-                    <input name="nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="grid-first-name" type="text" placeholder="">
+                    <input name="nomper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500 " id="edit-nomper" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       CODIGO
                     </label>
-                    <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="codper" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-codper" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       DNI
                     </label>
-                    <input name="numdoc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="numdoc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-numdoc" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                 </div>
@@ -348,35 +352,35 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       CLASE
                     </label>
-                    <input name="codcla" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="codcla" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-clase" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       CATEGORIA
                     </label>
-                    <input name="codcat" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="codcat" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-codcat" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       TIPO
                     </label>
-                    <input name="codtip" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="codtip" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-codtip" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       HRS SEMANALES
                     </label>
-                    <input name="hrssem" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="hrssem" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-hrssem" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                   <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       HRS MENSUALES
                     </label>
-                    <input name="hrsmen" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="grid-first-name" type="text" placeholder="">
+                    <input name="hrsmen" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white h-10 focus:border-gray-500" id="edit-hrsmen" type="text" placeholder="">
                     <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                   </div>
                 </div>
@@ -388,7 +392,7 @@
                       FACULTAD
                     </label>
                     <div class="relative">
-                      <select name="facult" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="grid-state">
+                      <select name="facult" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-none focus:outline-none focus:bg-white focus:border-gray-500 h-10" id="edit-edit-facul">
                         <option>FACULTAD DE INGENIERIA ELECTRÓNICA E INFROMÁTICA</option>
                         <option>Missouri</option>
                         <option>Texas</option>
@@ -449,4 +453,50 @@
     modal_act.classList.toggle('hidden')
   })
 </script>
+
+<!--BUSCADOR DE LA TABLA-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Escuchar cambios en el campo de búsqueda
+    $("#searchInput").on("input", function() {
+      // Obtener el valor actual del campo de búsqueda
+      var query = $(this).val();
+  
+      // Realizar una solicitud AJAX al servidor Flask
+      $.ajax({
+        url: "/escalofon",
+        method: "GET",
+        data: { query: query },
+        success: function(data) {
+          // Limpiar la tabla
+          $("#resultsTable tbody").empty();
+  
+          // Recorrer los resultados y agregar filas a la tabla
+          data.forEach(function(fila) {
+            var newRow = $("<tr class='bg-white border-b hover:bg-blue-100'></tr>")
+  
+            // Agregar las celdas de datos a la fila
+            newRow.append("<th scope='row' class='px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center'>" + fila[0] + "</th>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[1] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[2] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[3] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[4] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[5] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[6] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'>" + fila[7] + "</td>");
+            newRow.append("<td class='px-2 py-4'>" + fila[8] + "</td>");
+            newRow.append("<td class='px-2 py-4 text-center'><button type='submit' class='editar-btn font-medium text-blue-500 dark:text-blue-500 hover:underline' data-id='" + fila[0] + "'>EDITAR</button></td>");
+
+            // Agregar más celdas aquí según tus datos
+  
+            // Agregar la fila a la tabla
+            $("#resultsTable tbody").append(newRow);
+          });
+        }
+      });
+    });
+  });
+  </script>
+
 {% endblock %}
